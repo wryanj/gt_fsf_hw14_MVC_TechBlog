@@ -11,16 +11,18 @@
 /* -------------------------------------------------------------------------- */
     
     // Initialize Product model (table) by extending off Sequelize's Model class
-    class Users extends Model {
+    class User extends Model {
 
-        // Run check pw method of bcrypt
+        /*
+        // Run check pw method of bcrypt 
         checkPassword(loginPw) {
             return bcrypt.compareSync(loginPw, this.password);
         }
+        */
     }
 
     // Model Layout (columns and data types)
-    Users.init(
+    User.init(
 
         // Define attributes representing table columns and properties in SQL...
         {
@@ -30,7 +32,7 @@
                 primaryKey: true,
                 autoIncrement: true,
             },
-            name: {
+            user_name: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
@@ -53,6 +55,7 @@
 
         // Define Model Options
         {
+            /*
             // Hooks
             hooks: {
                 beforeCreate: async (newUserData) => {
@@ -64,6 +67,7 @@
                     return updatedUserData;
                 },
             },
+            */
             // Other Options
             sequelize,
             timestamps: false,

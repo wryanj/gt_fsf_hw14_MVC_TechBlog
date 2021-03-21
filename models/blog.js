@@ -10,30 +10,38 @@
 /* -------------------------------------------------------------------------- */
 
     // Initialize Product model (table) by extending off Sequelize's Model class
-    class Blogs extends Model {}
+    class Blog extends Model {}
 
     // Model Layout (coulumns and data types)
-    Blogs.init(
+    Blog.init(
 
         // Define attributes representing table columns and properties in SQL...
         {
             id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                primaryKey: true,
+                autoIncrement: true,
             },
             title: {
-            type: DataTypes.STRING,
-            allowNull: false,
+                type: DataTypes.STRING,
+                allowNull: false,
             },
             content: {
-            type: DataTypes.STRING,
+                type: DataTypes.STRING,
+            },
+            user_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: 'User',
+                    key: 'id'
+                }
             },
             date_created: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: DataTypes.NOW,
+                type: DataTypes.DATE,
+                allowNull: true,
+                defaultValue: DataTypes.NOW,
             },
         },
 
@@ -43,7 +51,7 @@
             timestamps: false,
             freezeTableName: true,
             underscored: true,
-            modelName: 'blogs',
+            modelName: 'blog',
         }
     );
 
@@ -51,4 +59,4 @@
 /*                                Export Module                               */
 /* -------------------------------------------------------------------------- */
 
-    module.exports = Blogs;
+    module.exports = Blog;
