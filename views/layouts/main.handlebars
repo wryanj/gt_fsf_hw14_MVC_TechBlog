@@ -42,7 +42,11 @@
                         <a class="nav-link" href="#">Dash</a>
                     </li>
                     <li class="nav-item">
+                        {{#if logged_in}}
+                        <a class="nav-link" href="#">Logout</a>
+                        {{else}}
                         <a class="nav-link" href="#">Login</a>
+                        {{/if}}
                     </li>
                     </ul>
                 </div>
@@ -86,8 +90,8 @@
                         </div>
                     </div>
 
+                
                 {{/if}}
-
                 <!--Render Blogs Below-->
 
                 {{{body}}}

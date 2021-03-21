@@ -20,7 +20,7 @@
                 include: [
                     {
                         model: User,
-                        //attributes: ['user.user_name']
+                        attributes: ['user_name']
                     }
                 ],
             });
@@ -30,13 +30,10 @@
             console.log(blogs);
 
             // Pass serialized data and session flag into db
-            res.json(blogs);
-           /* res.render('blogs', {
+            res.render('blogs', {
                 blogs,
                 logged_in: req.session.logged_in
             });
-            */
-          
         }
         catch (err) {
             res.status(500).json(err);
