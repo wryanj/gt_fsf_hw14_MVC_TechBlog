@@ -7,7 +7,7 @@
 
     // My Imports
     const homeRoutes = require('./homeRoutes')
-    // const apiRoutes = require('./api');
+    const apiRoutes = require('./api');
     
 
 /* -------------------------------------------------------------------------- */
@@ -15,7 +15,7 @@
 /* -------------------------------------------------------------------------- */
 
     router.use('/', homeRoutes); // for / path direct to homepage
-    //router.use('/', apiRoutes); // for /api path direct into apis
+    router.use('/api', apiRoutes); // for /api path direct into apis
 
 /* -------------------------------------------------------------------------- */
 /*                  Export Router Module for Use in ServerJS                  */

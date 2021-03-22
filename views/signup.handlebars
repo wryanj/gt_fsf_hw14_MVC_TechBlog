@@ -1,35 +1,36 @@
-<!--Existing User Login-->
-<div class="container">
-
-                <!--Existing User Login-->
+<!--New User Sign Up-->
                 <div class="row mt-5">
                     <div class="card px-0 shadow">
-                        <h5 class="card-header bg-dark text-white">Current User Login</h5>
+                        <h5 class="card-header bg-dark text-white">New User Sign Up</h5>
                             <div class="card-body">
                                 <form>
                                     <div class="row mb-3">
                                         <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                                         <div class="col-sm-10">
-                                            <input id="inputEmail" type="email" class="form-control">
+                                            <input type="email" class="form-control" id="inputNewEmail">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">User Name</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputNewUserName">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
                                         <div class="col-sm-10">
-                                            <input id="inputPassword" type="password" class="form-control" >
+                                            <input type="password" class="form-control" id="inputNewPassword">
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button id="login-button" type="submit"  class="btn btn-warning">Login</button>
+                                        <button type="submit" id="signup-button" class="btn btn-warning">Sign Up!</button>
                                     </div>
                                 </form>
                             </div>
                       </div>
                 </div>
 
-                <!--Prompt for New User Sign Up-->
-                <div class="row mb-3 text-center fs-5 mt-5">
-                    <p> If you are not an existing user, <a href="/api/users/signup" style="color: #ffc107;" class="fw-bold">please click here to sign up!</a> </p>
+                <!--Signup Instruction-->
+                <div class="row text-center fs-5 mt-5">
+                    <p> Enter your email, username and password to sign up!</p>
                 </div>
-
-</div>

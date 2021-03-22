@@ -10,7 +10,11 @@
 /*                                Define Routes                               */
 /* -------------------------------------------------------------------------- */
 
+    // base route for page
+
 /* ------------------------------- GET Routes ------------------------------- */
+    
+    // First time site visit with no prior login return dash_home with no create / edit options
     router.get('/', async (req, res) => {
         
         try{
@@ -30,7 +34,7 @@
             console.log(blogs);
 
             // Pass serialized data and session flag into db
-            res.render('blogs', {
+            res.render('dash_home', {
                 blogs,
                 logged_in: req.session.logged_in
             });
