@@ -13,8 +13,7 @@
 
 /* ------------------------------- Get Routes ------------------------------- */
     // Brings up the login page if user clicks login in nav
-    router.get('/login', async (req, res) => {
-            
+    router.get('/login', async (req, res) => {  
         try{
             // Render the login screen and the status if they are logged in
             res.render('login', {
@@ -28,7 +27,6 @@
 
     // Brings up the signup page if user clicks they need to create new crednetials on login page
     router.get('/signup', async (req, res) => {
-            
         try{
             // Render the login screen and the status if they are logged in
             res.render('signup', {
@@ -41,22 +39,32 @@
     })
 
 /* ------------------------------- Post Routes ------------------------------ */
+
     // Posts new user credentials to the database
-    router.post('/login', async (req, res) => {
-        console.log(`reqeust body is ${req.body}`)
-        try {
-            const userData = await User.create(req.body);
-            req.session.save(() => {
-                req.session.user_id = userData.id;
-                req.session.logged_in = true;
-        
-                res.status(200).json(userData);
-            });
-        } 
-        catch (err) {
-            res.status(400).json(err);
-        }
-    });
+        // Body Example:
+        /*
+            {
+                "email": "email1@email.com",
+                "user_name": "username1",
+                "password": "password2"
+            }
+        */
+        //Route
+        router.post('/signup', async (req, res) => {
+            console.log(`reqeust body is ${JSON.stringify(req.body)}`)
+            try {
+                const userData = await User.create(req.body);
+                req.session.save(() => {
+                    req.session.user_id = userData.id;
+                    req.session.logged_in = true;
+            
+                    res.status(200).json(userData);
+                });
+            } 
+            catch (err) {
+                res.status(400).json(err);
+            }
+        });
 
 /* ------------------------------- Put Routes ------------------------------- */
 

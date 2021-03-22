@@ -5,6 +5,7 @@
     // Import all the seed data functions created in this directory
     const seedUser = require('./user-seeds');
     const seedBlog = require('./blog-seeds');
+    const seedComment = require('./comment-seeds');
     
     
     // Import the database connection instance from connection / config
@@ -24,6 +25,9 @@
 
         await seedBlog();
         console.log('\n----- BLOGS SEEDED -----\n');
+
+        await seedComment();
+        console.log('\n----- COMMENTS SEEDED -----\n');
 
         process.exit(0);
   };

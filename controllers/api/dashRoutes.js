@@ -12,6 +12,7 @@
     // Routes mounted to /api/dash/...
 
 /* ------------------------------- Get Routes ------------------------------- */
+    // For Dash, return only blogs belonging to the logged in user
     router.get('/', async (req, res) => {
             
         try{

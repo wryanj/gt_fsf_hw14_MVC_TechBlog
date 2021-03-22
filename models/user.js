@@ -48,7 +48,7 @@
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    len: [25],
+                    len: [8],
                 },
             },
         },

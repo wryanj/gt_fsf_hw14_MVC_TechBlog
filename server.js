@@ -19,7 +19,7 @@
     // Create Engine with Helpers (after create add {helpers when ready} within the parenthesis. Custom helpers ie date conversion
     const hbs = exphbs.create();
 
-
+    // Create Session Object
     const sess = {
         secret: 'Super secret secret',
         cookie: {},
@@ -30,12 +30,11 @@
         })
     };
 
-
     // Inform Express.js on which template engine to use
     app.engine('handlebars', hbs.engine);
     app.set('view engine', 'handlebars');
 
-    // Middleware
+    // Middleware For everything on this route
     app.use(session(sess));
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));

@@ -1,4 +1,4 @@
-
+<!-- --------------------------- Modal ---------------------------- -->
 <!-- Create new Blog (trigger modal) -->
 <div class="text-center bg-secondary p-3 mb-5">
     <button type="button" class="btn btn-warning shadow-sm fw-bold" data-bs-toggle="modal"
@@ -14,13 +14,13 @@
         <div class="modal-content">
             <form class="p-2">
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label fw-bolder">Title</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                    <label for="titleinput" class="form-label fw-bolder">Title</label>
+                    <input type="text" class="form-control new-blog-title" id="modal1"
                         placeholder="Enter Blog Title">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label fw-bolder">Content</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Enter Content..."
+                    <label for="contentinput" class="form-label fw-bolder">Content</label>
+                    <textarea class="form-control new-blog-content" id="exampleFormControlTextarea1" placeholder="Enter Content..."
                         rows="3"></textarea>
                 </div>
             </form>
@@ -61,13 +61,13 @@
                 </div>
             </div>
             <div class="text-center">
-                <button type="button" class=" comment btn btn-info mb-3 shadow-sm">
+                <button type="button" class=" comment-blog btn btn-info mb-3 shadow-sm">
                     <i class="far fa-comment"></i>
                 </button>
-                <button type="button" class=" edit btn btn-warning mb-3 shadow-sm">
+                <button type="button" class=" edit-blog btn btn-warning mb-3 shadow-sm">
                     <i class="fas fa-pencil-alt"></i>
                 </button>
-                <button type="button" class=" delete btn btn-danger mb-3 shadow-sm">
+                <button type="button" class=" delete-blog btn btn-danger mb-3 shadow-sm">
                     <i class="far fa-trash-alt"></i>
                 </button>
             </div>
