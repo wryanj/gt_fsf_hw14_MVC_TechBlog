@@ -2,14 +2,14 @@
 /*                             Import Dependencies                            */
 /* -------------------------------------------------------------------------- */
     const router = require('express').Router();
-    const { Blogs } = require('../../models');
-    const withAuth = require('../../utils/auth');
+    const { User, Blog } = require('../../models');
+    //const withAuth = require('../../utils/auth');
 
 /* -------------------------------------------------------------------------- */
 /*                                Define Routes                               */
 /* -------------------------------------------------------------------------- */
 
-    // Routes mounted to /api/blogs/...
+    // Routes mounted to /api/dash/...
 
 /* ------------------------------- Get Routes ------------------------------- */
     router.get('/', async (req, res) => {
@@ -31,7 +31,7 @@
             console.log(blogs);
 
             // Pass serialized data and session flag into db
-            res.render('blogs', {
+            res.render('dash', {
                 blogs,
                 logged_in: req.session.logged_in
             });

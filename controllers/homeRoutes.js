@@ -34,7 +34,7 @@
             console.log(blogs);
 
             // Pass serialized data and session flag into db
-            res.render('dash_home', {
+            res.render('home', {
                 blogs,
                 logged_in: req.session.logged_in
             });
