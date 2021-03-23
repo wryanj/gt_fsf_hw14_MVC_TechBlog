@@ -3,7 +3,8 @@
 /* -------------------------------------------------------------------------- */
 
     const router = require('express').Router(); // Require Express Router
-    const { User, Blog } = require('../models'); // Require my Models
+    const { User, Blog} = require('../models'); // Require my Models
+    const Comment = require('../models/comment'); // Adding this because I was having trouble getting via de-structure...
     // const withAuth = require('../utils/auth'); // Require my auth function
 
 /* -------------------------------------------------------------------------- */
@@ -25,7 +26,12 @@
                     {
                         model: User,
                         attributes: ['user_name']
-                    }
+                    },
+                    {
+                        model: Comment,
+                        attributes: ['comment']
+                    },
+                   
                 ],
             });
             
@@ -46,9 +52,27 @@
 
 /* ------------------------------- POST Routes ------------------------------ */
 
-/* ------------------------------- PUT Routes ------------------------------- */
+    // Posts new comments associated to blogs and users to the db
+            // Body Example:
+            /*
+                {
+                    "comment": "new comment",
+                    "user_id": 2,
+                    "blog_id": 2
+                }
+            */
 
-/* ------------------------------ DELETE Routes ----------------------------- */
+            //Route
+            router.post('/comment', async (req, res) => {
+                console.log(`reqeust body is ${JSON.stringify(req.body)}`)
+                try {
+                    const commentData = await Comment.create(req.body);
+                    res.status(200).json(commentData);
+                } 
+                catch (err) {
+                    res.status(400).json(err);
+                }
+            });
 
 /* -------------------------------------------------------------------------- */
 /*                                Export Module                               */

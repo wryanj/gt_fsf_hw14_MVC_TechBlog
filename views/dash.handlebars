@@ -1,7 +1,10 @@
 <!-- --------------------------- Modal ---------------------------- -->
 <!-- Create new Blog (trigger modal) -->
 <div class="text-center bg-secondary p-3 mb-5">
-    <button type="button" class="btn btn-warning shadow-sm fw-bold" data-bs-toggle="modal"
+     <div class="row text-center fs-5 mt-2 text-white">
+        <p> Hello INSERT ACTIVE USER NAME! Lets Talk Tech.</p>
+    </div>
+    <button type="button" class="btn btn-warning shadow-sm fw-bold mb-2" data-bs-toggle="modal"
         data-bs-target="#newBlogModal">
         Create New Blog
     </button>
@@ -42,7 +45,9 @@
     <div class="row mt-4">
         <button class="btn btn-warning mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#id"
             aria-expanded="false" aria-controls="collapseExample">
-            <span class="fw-bold">{{blog.title}}</span> - <span class="fst-italic">{{blog.date_created}}</span>
+            <span class="fw-bold">{{blog.title}}</span>
+            <br>
+            <span class="fst-italic">{{blog.date_created}}</span>
         </button>
         <div class="collapse mt-1" id="id">
             <div class="card text-center px-0 py-0 shadow p-3 mb-3 bg-body rounded">
@@ -51,7 +56,7 @@
                 </div>
                 <div class="card-body pe-0">
 
-                    <p class="card-text">{{blog.comments}}</p>
+                    <p class="card-text">{{blog.content}}</p>
 
                     <h6 class="card-title">Comments</h6>
 

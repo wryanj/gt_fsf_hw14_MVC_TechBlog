@@ -2,8 +2,7 @@
 
 <div class="text-center bg-secondary p-3 mb-5">
     <div class="m-3 text-center text-light fs-4">
-        Welcome to TechBlogs! If you want to create, edit, or delete your blogs you can do this from MyDash after login
-        or signup!
+        Welcome to TechBlogs! Login or Signup to create, edit, comment or delete.
     </div>
 </div>
 
@@ -16,7 +15,9 @@
     <div class="row mt-4">
         <button class="btn btn-warning mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#id"
             aria-expanded="false" aria-controls="collapseExample">
-            <span class="fw-bold">{{blog.title}}</span> - <span class="fst-italic">{{blog.date_created}}</span>
+            <span class="fw-bold">{{blog.title}}</span>
+            <br>
+            <span class="fst-italic">{{blog.date_created}}</span>
         </button>
         <div class="collapse mt-1" id="id">
             <div class="card text-center px-0 py-0 shadow p-3 mb-3 bg-body rounded">
@@ -25,7 +26,7 @@
                 </div>
                 <div class="card-body pe-0">
 
-                    <p class="card-text">{{blog.comments}}</p>
+                    <p class="card-text">{{blog.content}}</p>
 
                     <h6 class="card-title">Comments</h6>
 
@@ -34,11 +35,14 @@
                     </div>
                 </div>
             </div>
+            <!--Conditionally Render Comments here if they are signed in-->
+            {{#if logged_in}}
             <div class="text-center">
                 <button type="button" class=" comment btn btn-info mb-3 shadow-sm">
                     <i class="far fa-comment"></i>
                 </button>
             </div>
+            {{/if}}
         </div>
     </div>
 

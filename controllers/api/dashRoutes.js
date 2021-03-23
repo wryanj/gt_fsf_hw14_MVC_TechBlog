@@ -3,6 +3,7 @@
 /* -------------------------------------------------------------------------- */
     const router = require('express').Router();
     const { User, Blog } = require('../../models');
+    const Comment = require('../../models/comment'); // Adding this because I was having trouble getting via de-structure...
     //const withAuth = require('../../utils/auth');
 
 /* -------------------------------------------------------------------------- */
@@ -12,7 +13,8 @@
     // Routes mounted to /api/dash/...
 
 /* ------------------------------- Get Routes ------------------------------- */
-    // For Dash, return only blogs belonging to the logged in user
+
+    // Return blogs belonging to user (this needs updating after MVP current only returns all blogs)
     router.get('/', async (req, res) => {
             
         try{
@@ -23,7 +25,11 @@
                     {
                         model: User,
                         attributes: ['user_name']
-                    }
+                    },
+                    {
+                        model: Comment,
+                        attributes: ['comment']
+                    },
                 ],
             });
             
@@ -44,9 +50,100 @@
 
 /* ------------------------------- Post Routes ------------------------------ */
 
+    // Posts blogs associated with users to the db
+    
+        // Body Example:
+            /*
+                {
+                        "title": "new blog title",
+                        "content": "This is some blogger thoughts",
+                        "user_id": 2
+                }
+            */
+
+        //Route
+        router.post('/blog', async (req, res) => {
+            console.log(`reqeust body is ${JSON.stringify(req.body)}`)
+            try {
+                const blogData = await Blog.create(req.body);
+                res.status(200).json(blogData);
+            } 
+            catch (err) {
+                res.status(400).json(err);
+            }
+        });
+
+    // Posts new comments associated to blogs and users to the db
+
+        // Body Example:
+            /*
+                {
+                    "comment": "new comment",
+                    "user_id": 2,
+                    "blog_id": 2
+                }
+            */
+
+        //Route
+        router.post('/comment', async (req, res) => {
+            console.log(`reqeust body is ${JSON.stringify(req.body)}`)
+            try {
+                const commentData = await Comment.create(req.body);
+                res.status(200).json(commentData);
+            } 
+            catch (err) {
+                    res.status(400).json(err);
+            }
+        });
+
+        
+
 /* ------------------------------- Put Routes ------------------------------- */
 
+    // Edit existing comment content or title
+
+        // Body Example
+            /*
+                {
+                    "title": "updated blog title",
+                    "content": "This is some blogger thoughts",
+                }
+            */
+
+        // Route
+        router.put('/blog/:id', async (req, res) => {
+            console.log(`reqeust body is ${JSON.stringify(req.body)}`)
+            try {
+                await Blog.update(
+                    {
+                        title: req.body.title,
+                        content:req.body.content
+                    },
+                    {where: {id:req.params.id}}
+                )
+                res.status(200).json(`blog updated successfully!`);
+            } 
+            catch (err) {
+                    res.status(400).json(err);
+            }
+        });
+
 /* ------------------------------ Delete Routes ----------------------------- */
+        
+        // Route to delete a given blog
+        router.delete('/blog/:id', async (req, res) => {
+            console.log(`reqeust body is ${JSON.stringify(req.body)}`)
+            try {
+                await Blog.destroy(
+                    {where: {id: req.params.id}}
+                )
+                res.status(200).json(`blog deleted successfully.`);
+            } 
+            catch (err) {
+                    res.status(400).json(err);
+            }
+        });
+
 
 /* -------------------------------------------------------------------------- */
 /*                              Export the Module                             */
