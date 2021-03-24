@@ -1,9 +1,11 @@
 <!-- --------------------------- Greeting ---------------------------- -->
 
 <div class="text-center bg-secondary p-3 mb-5">
+    {{#unless logged_in}}
     <div class="m-3 text-center text-light fs-4">
         Welcome to TechBlogs! Login or Signup to create, edit, comment or delete.
     </div>
+    {{/unless}}
 </div>
 
 <!-- --------------------------- Body ---------------------------- -->
@@ -13,7 +15,7 @@
     {{#each blogs as |blog|}}
 
     <div class="row mt-4">
-        <button class="btn btn-warning mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#id"
+        <button class="btn btn-warning mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#id" 
             aria-expanded="false" aria-controls="collapseExample">
             <span class="fw-bold">{{blog.title}}</span>
             <br>
@@ -36,13 +38,13 @@
                 </div>
             </div>
             <!--Conditionally Render Comments here if they are signed in-->
-            {{#if logged_in}}
-            <div class="text-center">
+             <div class="text-center">
                 <button type="button" class=" comment btn btn-info mb-3 shadow-sm">
                     <i class="far fa-comment"></i>
                 </button>
             </div>
-            {{/if}}
+           
+            
         </div>
     </div>
 

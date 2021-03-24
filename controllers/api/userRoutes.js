@@ -51,24 +51,36 @@
         */
         //Route
         router.post('/signup', async (req, res) => {
-            console.log(`reqeust body is ${JSON.stringify(req.body)}`)
             try {
+                // create a new user based on submitted information
                 const userData = await User.create(req.body);
+
+                // Save information about the session, the user is now logged in
                 req.session.save(() => {
                     req.session.user_id = userData.id;
                     req.session.logged_in = true;
             
+                    // Send a success back with user data in response
                     res.status(200).json(userData);
                 });
             } 
+            // If failure, create failure
             catch (err) {
                 res.status(400).json(err);
             }
         });
 
-/* ------------------------------- Put Routes ------------------------------- */
-
-/* ------------------------------ Delete Routes ----------------------------- */
+        
+     // Terminates the Session and Logs User Out
+     router.post('/logout', (req, res) => {
+        if (req.session.logged_in) {
+          req.session.destroy(() => {
+            res.status(204).end();
+          });
+        } else {
+          res.status(404).end();
+        }
+      });
 
 /* -------------------------------------------------------------------------- */
 /*                              Export the Module                             */

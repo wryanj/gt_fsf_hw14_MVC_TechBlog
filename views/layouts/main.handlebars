@@ -46,7 +46,7 @@
                         <!--Conditionally Show login or logout-->
                         <li class="nav-item">
                              {{#if logged_in}}
-                            <a class="nav-link" href="/">Logout</a>
+                            <a id="logout" class="nav-link" href="/">Logout</a>
                             {{else}}
                             <a class="nav-link" href="/api/users/login">Login</a>
                             {{/if}}
@@ -58,12 +58,8 @@
 
         <!-- --------------------------- Main Container ---------------------------- -->
             
-
-
                   {{{body}}}
 
-         
-        
         <!-- ---------------------------- Script Links ----------------------------- -->
 
                 <!--Bootsrap 5.0 Bundle-->
@@ -72,6 +68,12 @@
                     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" 
                     crossorigin="anonymous">
                 </script>
+
+                <!--Script for logout rendered only if user is currently logged in-->
+                {{#if logged_in}}
+                <script src="../js/logout.js"></script>
+                {{/if}}
+
 
             
     </body>
