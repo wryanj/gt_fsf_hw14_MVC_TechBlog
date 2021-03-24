@@ -3,7 +3,7 @@
 /* -------------------------------------------------------------------------- */
     const router = require('express').Router();
     const { User } = require('../../models');
-    // const withAuth = require('../../utils/auth');
+   
 
 /* -------------------------------------------------------------------------- */
 /*                                Define Routes                               */
@@ -52,7 +52,6 @@
         //Route
         router.post('/signup', async (req, res) => {
             try { 
-                console.log(`api called`);
                 // create a new user based on submitted information
                 const userData = await User.create(req.body);
                 console.log(`user data created`);
@@ -73,8 +72,55 @@
         });
 
 
-     // Terminates the Session and Logs User Out
-     
+    // Route to login user and compare credentials
+    router.post('/login', async (req, res) => {
+        try {
+
+            console.log(`trying login route with credentials ${JSON.stringify(req.body)}`)
+        
+            // set userData equal to the user email submitted
+            const userData = await User.findOne({ where: { email: req.body.email } });
+            console.log(`user data found is ${userData.email} and ${userData.password} and ${userData.user_name}`);
+        
+            // If user data is not provided, send a message to provide it
+            if (!userData) {
+                console.log(`into if no user data block`)
+                res
+                .status(400)
+                .json({ message: 'Incorrect email or password, please try again' });
+                return;
+            }
+            else {
+                console.log(`into else block...`)
+                // set validPassword to be equal to the passwordcheck completed against the db and the body
+                const validPassword = await userData.checkPassword(req.body.password);
+                console.log(`valid password result it ${validPassword}`);
+            
+                // If password entered does not match password in DB...notify them and return
+                if (!validPassword) {
+                    res
+                    .status(400)
+                    .json({ message: 'Incorrect email or password, please try again' });
+                    return;
+                }
+            
+                // Otehrwise provide message that they are logged in, and save the session while setting the session user id
+                req.session.save(() => {
+                    req.session.user_id = userData.id;
+                    req.session.logged_in = true;
+                    res.json({ user: userData, message: 'You are now logged in!' });
+                });
+            }
+            
+        } 
+        // If anything goes wrong ahead of that log an error
+        catch (err) {
+          res.status(400).json(err);
+        }
+
+    });
+
+    // Route to end session and log out user
      router.post('/logout', (req, res) => {
         if (req.session.logged_in) {
           req.session.destroy(() => {
