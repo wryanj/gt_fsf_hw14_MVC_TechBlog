@@ -2,7 +2,7 @@
 <!-- Create new Blog (trigger modal) -->
 <div class="text-center bg-secondary p-3 mb-5">
      <div class="row text-center fs-5 mt-2 text-white">
-        <p> Hello INSERT ACTIVE USER NAME! Lets Talk Tech.</p>
+        <p>Hello {{user_name}}! Lets talk tech.</p>
     </div>
     <button type="button" class="btn btn-warning shadow-sm fw-bold mb-2" data-bs-toggle="modal"
         data-bs-target="#newBlogModal">
@@ -29,7 +29,7 @@
             </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-warning">Post</button>
+                <button type="button" id = "post-new-blog" class="btn btn-warning">Post</button>
             </div>
         </div>
     </div>
@@ -82,5 +82,8 @@
     {{/each}}
 
 </div>
+
+<!--Script for blogs management on dashboard page-->
+<script src="/js/dashLogic.js"></script>
 
 

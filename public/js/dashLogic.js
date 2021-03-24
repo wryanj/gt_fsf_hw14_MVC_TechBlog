@@ -21,7 +21,7 @@
         if (title && content) {
             
             // Post the information
-            const response = await fetch('/api/dash', {
+            const response = await fetch('/api/dash/blog', {
                 method: 'POST',
                 body: JSON.stringify({title,content}),
                 headers: {
@@ -30,6 +30,7 @@
             });
             // If its an ok response load the latest dash again
             if (response.ok) {
+                alert(`New blog created!`);
                 document.location.replace('/api/dash');
             }
             // If it fails, notify them
@@ -56,15 +57,18 @@
 
 /* ------------------------------ Post New Blog ----------------------------- */
 document
-    .querySelector('.post-new-blog')
+    .querySelector('#post-new-blog')
     .addEventListener('click', postNewBlog);
 
 /* -------------------------------- Edit Blog ------------------------------- */
+/*
 document
     .querySelector('.edit-blog')
     .addEventListener('click', editBlog);
-
+*/
 /* ------------------------------- Delete Blog ------------------------------ */
+/*
 document
     .querySelector('.delete-blog')
     .addEventListener('click', editBlog);
+*/

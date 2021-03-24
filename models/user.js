@@ -12,12 +12,10 @@
     
     // Initialize Product model (table) by extending off Sequelize's Model class
     class User extends Model {
-        
         // Run check pw method of bcrypt 
         checkPassword(loginPw) {
             return bcrypt.compareSync(loginPw, this.password);
         }
-        
     }
 
     // Model Layout (columns and data types)

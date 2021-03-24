@@ -40,7 +40,8 @@ const withAuth = require('../../utils/auth');
             // Pass serialized data and session flag into db
             res.render('dash', {
                 blogs,
-                logged_in: req.session.logged_in
+                logged_in: req.session.logged_in,
+                user_name: req.session.user_name
             });
         }
         catch (err) {
@@ -63,8 +64,9 @@ const withAuth = require('../../utils/auth');
 
         //Route
         router.post('/blog', withAuth, async (req, res) => {
-            console.log(`reqeust body is ${JSON.stringify(req.body)}`)
+            console.log(`trying to create a blog`)
             try {
+                console.log(JSON.stringify(req.body));
                 const blogData = await Blog.create(req.body);
                 res.status(200).json(blogData);
             } 

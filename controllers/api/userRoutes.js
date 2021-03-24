@@ -59,6 +59,7 @@
                 // Save information about the session, the user is now logged in
                 req.session.save(() => {
                     req.session.user_id = userData.id;
+                    req.session.user_name = userData.user_name;
                     req.session.logged_in = true;
             
                     // Send a success back with user data in response
@@ -92,9 +93,9 @@
             }
             else {
                 console.log(`into else block...`)
-                // set validPassword to be equal to the passwordcheck completed against the db and the body
+                // set validPassword to be equal to the passwordcheck completed against the db and the body (NOT EXECUTING THIS!)
                 const validPassword = await userData.checkPassword(req.body.password);
-                console.log(`valid password result it ${validPassword}`);
+                console.log(`valid password result it ${validPassword}`); 
             
                 // If password entered does not match password in DB...notify them and return
                 if (!validPassword) {
@@ -107,6 +108,7 @@
                 // Otehrwise provide message that they are logged in, and save the session while setting the session user id
                 req.session.save(() => {
                     req.session.user_id = userData.id;
+                    req.session.user_name = userData.user_name;
                     req.session.logged_in = true;
                     res.json({ user: userData, message: 'You are now logged in!' });
                 });
