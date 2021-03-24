@@ -40,9 +40,13 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/">Home</a>
                         </li>
+                        <!--Conditionally Show MyDash only if logged in-->
+                        {{#if logged_in}}
                          <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/api/dash">MyDash</a>
                         </li>
+                        {{/if}}
+                      
                         <!--Conditionally Show login or logout-->
                         <li class="nav-item">
                              {{#if logged_in}}
@@ -70,9 +74,9 @@
                 </script>
 
                 <!--Script for logout rendered only if user is currently logged in-->
-                {{#if logged_in}}
+               
                 <script src="../js/logout.js"></script>
-                {{/if}}
+               
 
 
             

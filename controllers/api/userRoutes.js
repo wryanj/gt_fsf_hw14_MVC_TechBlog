@@ -51,9 +51,11 @@
         */
         //Route
         router.post('/signup', async (req, res) => {
-            try {
+            try { 
+                console.log(`api called`);
                 // create a new user based on submitted information
                 const userData = await User.create(req.body);
+                console.log(`user data created`);
 
                 // Save information about the session, the user is now logged in
                 req.session.save(() => {
@@ -70,8 +72,9 @@
             }
         });
 
-        
+
      // Terminates the Session and Logs User Out
+     
      router.post('/logout', (req, res) => {
         if (req.session.logged_in) {
           req.session.destroy(() => {
@@ -81,6 +84,7 @@
           res.status(404).end();
         }
       });
+      
 
 /* -------------------------------------------------------------------------- */
 /*                              Export the Module                             */

@@ -16,7 +16,7 @@
         console.log("values captured as vairables are" + email + user_name + password)
 
         // If there are values present for all when button was pressed...
-        if (email && password && user_name) {
+        if (email && password.length > 7 && user_name) {
 
             // Send a POST request to the API endpoint
             const response = await fetch('/api/users/signup', {
@@ -33,6 +33,9 @@
             else {
                 alert(response.statusText);
             }
+        }
+        else {
+            alert (`please ensure your password is at least 8 characters long`)
         }
     };
 

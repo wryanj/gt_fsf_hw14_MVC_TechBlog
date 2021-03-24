@@ -4,6 +4,7 @@
     const router = require('express').Router();
     const { User, Blog } = require('../../models');
     const Comment = require('../../models/comment'); // Adding this because I was having trouble getting via de-structure...
+const withAuth = require('../../utils/auth');
     //const withAuth = require('../../utils/auth');
 
 /* -------------------------------------------------------------------------- */
@@ -15,7 +16,7 @@
 /* ------------------------------- Get Routes ------------------------------- */
 
     // Return blogs belonging to user (this needs updating after MVP current only returns all blogs)
-    router.get('/', async (req, res) => {
+    router.get('/', withAuth, async (req, res) => {
             
         try{
 
@@ -35,7 +36,6 @@
             
             // Serialize data so the template can read it
             const blogs = blogData.map((blog) => blog.get({plain : true}));
-            console.log(blogs);
 
             // Pass serialized data and session flag into db
             res.render('dash', {
@@ -62,7 +62,7 @@
             */
 
         //Route
-        router.post('/blog', async (req, res) => {
+        router.post('/blog', withAuth, async (req, res) => {
             console.log(`reqeust body is ${JSON.stringify(req.body)}`)
             try {
                 const blogData = await Blog.create(req.body);
@@ -85,7 +85,7 @@
             */
 
         //Route
-        router.post('/comment', async (req, res) => {
+        router.post('/comment', withAuth, async (req, res) => {
             console.log(`reqeust body is ${JSON.stringify(req.body)}`)
             try {
                 const commentData = await Comment.create(req.body);
