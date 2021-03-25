@@ -1,20 +1,19 @@
-<!-- --------------------------- Modal ---------------------------- -->
+<!-- --------------------------- Modals ---------------------------- -->
 <!-- Create new Blog (trigger modal) -->
 <div class="text-center bg-secondary p-3 mb-5">
      <div class="row text-center fs-5 mt-2 text-white">
         <p>Hello {{user_name}}! Lets talk tech.</p>
     </div>
-    <button type="button" class="btn btn-warning shadow-sm fw-bold mb-2" data-bs-toggle="modal"
-        data-bs-target="#newBlogModal">
+    <button type="button" class="btn btn-warning shadow-sm fw-bold mb-2" data-bs-toggle="modal"data-bs-target="#newBlogModal">
         Create New Blog
     </button>
 </div>
 
 <!-- Modal -->
-<div class="modal fade mt-5" id="newBlogModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade mt-5" id="newBlogModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" data-user-id={{user_id}}>
             <form class="p-2">
                 <div class="mb-3">
                     <label for="titleinput" class="form-label fw-bolder">Title</label>
@@ -65,13 +64,43 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center">
+            <div class="text-center buttons-container">
+                <!--Comment Button-->
                 <button type="button" class=" comment-blog btn btn-info mb-3 shadow-sm">
                     <i class="far fa-comment"></i>
                 </button>
-                <button type="button" class=" edit-blog btn btn-warning mb-3 shadow-sm">
+
+                <!--Edit Blog Button Renders Modal With Content-->
+                <button type="button" class=" edit-blog btn btn-warning mb-3 shadow-sm" data-bs-toggle="modal" data-bs-target="#editBlogModal">
                     <i class="fas fa-pencil-alt"></i>
                 </button>
+
+                    <!--edit modal hidden unless button clicked-->
+                    <div class="modal fade mt-5" id="editBlogModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content" data-user-id={{user_id}}>
+                                <form class="p-2">
+                                    <div class="mb-3">
+                                        <label for="titleinput" class="form-label fw-bolder">Title</label>
+                                        <input type="text" class="form-control new-blog-title" id="modal2"
+                                            placeholder="Enter Blog Title" value="{{blog.title}}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="contentinput" class="form-label fw-bolder">Content</label>
+                                        <textarea class="form-control new-blog-content" id="exampleFormControlTextarea1" placeholder="Enter Content..."rows="3">
+{{blog.content}}
+                                        </textarea>
+                                    </div>
+                                </form>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-warning update-blog">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!--Delete Blog Button-->
                 <button type="button" class=" delete-blog btn btn-danger mb-3 shadow-sm">
                     <i class="far fa-trash-alt"></i>
                 </button>

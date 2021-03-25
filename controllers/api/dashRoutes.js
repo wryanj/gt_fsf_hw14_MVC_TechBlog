@@ -41,7 +41,8 @@ const withAuth = require('../../utils/auth');
             res.render('dash', {
                 blogs,
                 logged_in: req.session.logged_in,
-                user_name: req.session.user_name
+                user_name: req.session.user_name,
+                user_id: req.session.user_id
             });
         }
         catch (err) {
@@ -113,8 +114,9 @@ const withAuth = require('../../utils/auth');
             */
 
         // Route
-        router.put('/blog/:id', async (req, res) => {
+        router.put('/blog/update/:id', async (req, res) => {
             console.log(`reqeust body is ${JSON.stringify(req.body)}`)
+            console.log(req.params.id)
             try {
                 await Blog.update(
                     {

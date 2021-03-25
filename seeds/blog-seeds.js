@@ -12,7 +12,7 @@
         {
             title: 'Test Blog 1',
             content: 'This is my testing blog one blah blah blah',
-            user_id: 2
+            user_id: 1
 
         },
         {
@@ -23,7 +23,7 @@
         {
             title: 'Test Blog 3',
             content: 'This is my testing blog three blah blah blah',
-            user_id: 2
+            user_id: 3
         }
     ];
 
