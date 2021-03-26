@@ -16,7 +16,7 @@
         },
         {
             comment: 'This is a comment Also! Sweet!',
-            user_id: 3,
+            user_id: 2,
             blog_id: 1
         },
         {

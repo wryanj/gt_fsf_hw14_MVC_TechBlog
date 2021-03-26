@@ -28,7 +28,7 @@
             // If successful, alert them and then redirect them to the dashboard page
             if (response.ok) {
                 alert(`Your now signed up! Click ok to view blogs, create and edit your own blogs, and leave comments!`)
-                document.location.replace('/api/dash');
+                document.location.replace('/');
             } 
             else {
                 alert(response.statusText);

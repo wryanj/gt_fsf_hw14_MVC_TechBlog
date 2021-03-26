@@ -4,8 +4,7 @@
     const router = require('express').Router();
     const { User, Blog } = require('../../models');
     const Comment = require('../../models/comment'); // Adding this because I was having trouble getting via de-structure...
-const withAuth = require('../../utils/auth');
-    //const withAuth = require('../../utils/auth');
+    const withAuth = require('../../utils/auth');
 
 /* -------------------------------------------------------------------------- */
 /*                                Define Routes                               */
@@ -24,7 +23,7 @@ const withAuth = require('../../utils/auth');
             const blogData = await Blog.findAll({
                 include: [
                     {
-                        model: User,
+                        model: User, 
                         attributes: ['user_name']
                     },
                     {
@@ -32,17 +31,24 @@ const withAuth = require('../../utils/auth');
                         attributes: ['comment']
                     },
                 ],
+                where: {
+                    user_id: req.session.user_id
+                }
             });
             
+            
+
             // Serialize data so the template can read it
             const blogs = blogData.map((blog) => blog.get({plain : true}));
+            
 
             // Pass serialized data and session flag into db
             res.render('dash', {
                 blogs,
                 logged_in: req.session.logged_in,
                 user_name: req.session.user_name,
-                user_id: req.session.user_id
+                user_id: req.session.user_id,
+    
             });
         }
         catch (err) {
@@ -52,7 +58,7 @@ const withAuth = require('../../utils/auth');
 
 /* ------------------------------- Post Routes ------------------------------ */
 
-    // Posts blogs associated with users to the db
+    // Posts new blogs associated with users to the db
     
         // Body Example:
             /*
@@ -114,7 +120,7 @@ const withAuth = require('../../utils/auth');
             */
 
         // Route
-        router.put('/blog/update/:id', async (req, res) => {
+        router.put('/blog/:id', async (req, res) => {
             console.log(`reqeust body is ${JSON.stringify(req.body)}`)
             console.log(req.params.id)
             try {

@@ -38,6 +38,7 @@
         }
     })
 
+
 /* ------------------------------- Post Routes ------------------------------ */
 
     // Posts new user credentials to the database
