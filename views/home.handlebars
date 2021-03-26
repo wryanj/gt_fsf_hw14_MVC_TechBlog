@@ -41,7 +41,10 @@
                     <p class="card-text">{{blog.content}}</p>
                     <h6 class="card-title">Comments</h6>
                     <div>
-                        <span>Comment 1</span> - <span>username</span>
+                        {{#each blog.comments as |comment|}}       
+                        <div class="fw-ligher fst-italic">{{comment.comment}} - <span class = "text-warning">INPUT USERNAME</span></div>
+                        {{/each}}
+                        
                     </div>
                 </div>
             </div>
@@ -49,7 +52,7 @@
             <!--Buttons Container For Comment, Edit, Delete-->
             <div class="text-center buttons-container" data-blogid = {{blog.id}} data-userid = {{blog.user_id}}>
 
-                <!--Comment Button-->
+               <!--Comment Button-->
                 <button type="button" class=" comment-blog btn btn-info mb-3 shadow-sm" data-bs-toggle="modal" data-bs-target="#commentModal{{blog.id}}">
                     <i class="far fa-comment"></i>
                 </button>
@@ -59,7 +62,7 @@
                         <div class="modal-dialog">
 
                             <!--Modal Content-->
-                            <div class="modal-content" data-user-id={{user_id}} data-blog-id={{blog.id}}>
+                            <div class="modal-content" data-currentuser-id={{user_id}} data-blog-id={{blog.id}}>
                                 <form class="p-2">
                                     <div class="mb-3">
                                         <label for="contentinput" class="form-label fw-bolder">Comment</label>
@@ -87,7 +90,7 @@
 </div>
 
 <!-- --------------------------- Scripts ---------------------------- -->
-
+<script src="/js/homelogic.js"></script>
         
 
             
