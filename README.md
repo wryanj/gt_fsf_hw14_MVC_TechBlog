@@ -1,6 +1,5 @@
 # gt_fsf_hw14_MVC_TechBlog
 
-
 ## Table of Contents
 1. [Description](#Description)
 3. [Usage](#Usage)
@@ -17,7 +16,9 @@ This project also gave a first exposure to template engines such as handlebarsjs
 Overall i was able to get a pretty solid application, although there are still some minor bugs in the icebox I was not able to sort out prior to needing to submit. None of them are stopping the functionality as they all only deal with the display of the applicatoin and having certain informatoin render based on various conditions. 
 
 **Demo Video**  
+Demo video below is guided walkthorough of application. 
 https://user-images.githubusercontent.com/72420733/112721452-3483ce00-8eda-11eb-9de6-c3fb58c8ae52.mp4
+
 
 ## Usage
 This application can be used to manage community blog posts and commenting. 
@@ -34,5 +35,3 @@ Email me at ryanjohnson9685@gmail.com for more information.
 
 ## Credits
 For this assignment I utilized class notes and recordings, as well as some MDM and W3 schools. I also reviewed the docs for sequelize, handlebarsjs and reviewed some stack for questions I came across along the way.
-
-
