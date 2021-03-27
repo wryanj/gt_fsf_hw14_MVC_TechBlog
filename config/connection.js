@@ -24,7 +24,7 @@
 
     // Specify host, dialect (using mySQL) and port of your local server
     {
-      host: 'localhost',
+      host: process.env.CLEARDB_DATABASE_URL,
       dialect: 'mysql',
       port: 3306,
     }
