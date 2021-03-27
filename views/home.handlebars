@@ -1,19 +1,11 @@
 <!-- --------------------------- Greeting ---------------------------- -->
 
 <div class="text-center bg-secondary p-3 mb-5">
-    {{#if logged_in}}
-    <div class="m-3 text-center text-light fs-4">
-       Whos Talkin?
-    </div>
-    {{/if}}
-    {{#else}}
+    {{#unless logged_in}}
     <div class="m-3 text-center text-light fs-4">
         Welcome to TechBlogs! Login or Signup to create, edit, comment or delete.
     </div>
-    {{/else}}
-
-    
-
+    {{/unless}}
 </div>
 
 <!-- --------------------------- Body ---------------------------- -->
