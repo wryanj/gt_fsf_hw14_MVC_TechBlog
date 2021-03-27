@@ -24,16 +24,17 @@
 
 /* --------------------------- Comments and Users --------------------------- */
 
-    // A Comment belongs to one user
+    // A Comment belongs to one user. This foreign key adds a user_id to comment (since I use underscore true in my options on the model)
     Comment.belongsTo(User, {
         foreignKey:'user_id'
     });
 
-    // A user has many comments
+    // A user has many comments, thus creating foreign key in Comments Table (as user_id) - I can do this here, o in the block above
     User.hasMany(Comment, {
         foreignKey: 'user_id',
     });
 
+    
 /* --------------------------- Comments and Blogs --------------------------- */
 
     // A comment belongs to one blog

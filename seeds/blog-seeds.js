@@ -10,20 +10,20 @@
     // Define array of data to seed
     const blogData = [
         {
-            title: 'Test Blog 1',
-            content: 'This is my testing blog one blah blah blah',
+            title: 'Mr Cows First Blog',
+            content: 'Mooo',
             user_id: 1
 
         },
         {
-            title: 'Test Blog 2',
-            content: 'This is my testing blog two blah blah blah',
-            user_id: 2
+            title: 'Mr Cows Second Blog',
+            content: 'Mooo x2',
+            user_id: 1
         },
         {
-            title: 'Test Blog 3',
-            content: 'This is my testing blog three blah blah blah',
-            user_id: 3
+            title: 'Mr Ducks First Blog',
+            content: 'Quack Quack',
+            user_id: 2
         }
     ];
 

@@ -128,17 +128,23 @@
         // Prevent Default
         event.preventDefault();
 
+        // clear variables
+        let button;
+        let buttonsContainer;
+        let blog_id;
+
         // Get the id for the blog on which the delete button was clicked
 
             // Get updated title by traversing dom from event target with vanilla js
                 // Call out the button clicked
-                const buttonsContainer= event.target.parentElement;
+                button= event.currentTarget
+                    console.log(button);
+                buttonsContainer = button.parentElement;
                     console.log(buttonsContainer);
-                const blog_id = buttonsContainer.getAttribute('data-blogid');
+                blog_id = buttonsContainer.getAttribute('data-blogid');
                     console.log(blog_id);
                     
-              
-
+        
             // delete the blog by id
             try {
                 // Post the information
@@ -156,6 +162,7 @@
                 // If it fails, notify them
                 else {
                     alert('Failed to Delete Blog')
+                    return;
                 }
             }
             // If no content exists when posting, alert them to fill it out first
@@ -247,9 +254,11 @@
     const editBlogButtons = document.querySelectorAll('.update-blog');
 
     // Loop through this array of buttons and add an event listner to each of them to run edit blog function
+    
     editBlogButtons.forEach(function(el) {
         el.addEventListener('click', editBlog)
     });
+    
         
 /* ------------------------------- Delete Blog ------------------------------ */
 

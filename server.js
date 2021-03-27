@@ -5,7 +5,7 @@
     const session = require('express-session');
     const exphbs = require('express-handlebars');
     const routes = require('./controllers');
-    //const helpers = require('./utils/helpers');
+    const helpers = require('./utils/helpers');
 
     // Seup Sequelize
     const sequelize = require('./config/connection');
@@ -17,7 +17,7 @@
 
 
     // Create Engine with Helpers (after create add {helpers when ready} within the parenthesis. Custom helpers ie date conversion
-    const hbs = exphbs.create();
+    const hbs = exphbs.create({helpers}); // This is where I reference my helper.js I required above, to use helper functions
 
     // Create Session Object
     const sess = {
@@ -27,7 +27,10 @@
         saveUninitialized: true,
         store: new SequelizeStore({
             db: sequelize
-        })
+        }),
+        // Set session to expire after 15 minutes (1 min = 60000 milleseconds)
+        expires: new Date(Date.now() + (15*60000))
+
     };
 
     // Inform Express.js on which template engine to use

@@ -12,17 +12,17 @@
         {
             comment: 'This is a comment! Nice!',
             user_id: 1,
-            blog_id: 3
+            blog_id: 1
         },
         {
             comment: 'This is a comment Also! Sweet!',
             user_id: 2,
-            blog_id: 1
+            blog_id: 2
         },
         {
-            comment: 'This is a comment Also almost like the second commend in my seed! Awesome!',
+            comment: 'This is a another comment! Awesome!',
             user_id: 3,
-            blog_id: 1
+            blog_id: 3
         }
     ];
 

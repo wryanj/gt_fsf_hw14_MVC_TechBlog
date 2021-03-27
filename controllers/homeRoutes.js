@@ -25,11 +25,9 @@
                 include: [
                     {
                         model: User,
-                        attributes: ['user_name']
                     },
                     {
                         model: Comment,
-                        attributes: ['comment']
                     },
                    
                 ],

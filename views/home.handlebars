@@ -28,7 +28,7 @@
         <button class="btn btn-warning mb-1" type="button" data-js-blogid = {{blog.id}} data-bs-toggle="collapse" data-bs-target="#ids{{blog.id}}" aria-expanded="false" aria-controls="collapse">
             <span class="fw-bold">{{blog.title}}</span>
             <br>
-            <span class="fst-italic">{{{blog.date_created}}}</span>
+            <span class="fst-italic">{{{format_date blog.date_created}}}</span>
         </button>
 
         <!--Blog Card Under Button with Username, content and comments-->
@@ -42,7 +42,7 @@
                     <h6 class="card-title">Comments</h6>
                     <div>
                         {{#each blog.comments as |comment|}}       
-                        <div class="fw-ligher fst-italic">{{comment.comment}} - <span class = "text-warning">INPUT USERNAME</span></div>
+                        <div class="fw-ligher fst-italic">{{comment.comment}} - <span class = "text-warning fw-bold">USER {{comment.user_id}}</span> | <span>{{format_date comment.date_created}}</span></div>
                         {{/each}}
                         
                     </div>
@@ -50,8 +50,8 @@
             </div>
 
             <!--Buttons Container For Comment, Edit, Delete-->
+            
             <div class="text-center buttons-container" data-blogid = {{blog.id}} data-userid = {{blog.user_id}}>
-
                <!--Comment Button-->
                 <button type="button" class=" comment-blog btn btn-info mb-3 shadow-sm" data-bs-toggle="modal" data-bs-target="#commentModal{{blog.id}}">
                     <i class="far fa-comment"></i>
@@ -82,6 +82,7 @@
 
                     </div>
             </div>
+            
         </div>
     </div>
 

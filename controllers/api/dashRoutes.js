@@ -6,6 +6,7 @@
     const Comment = require('../../models/comment'); // Adding this because I was having trouble getting via de-structure...
     const withAuth = require('../../utils/auth');
 
+
 /* -------------------------------------------------------------------------- */
 /*                                Define Routes                               */
 /* -------------------------------------------------------------------------- */
@@ -24,11 +25,9 @@
                 include: [
                     {
                         model: User, 
-                        attributes: ['user_name']
                     },
                     {
                         model: Comment,
-                        attributes: ['comment']
                     },
                 ],
                 where: {
@@ -36,12 +35,11 @@
                 }
             });
             
-            
 
             // Serialize data so the template can read it
             const blogs = blogData.map((blog) => blog.get({plain : true}));
             
-
+    
             // Pass serialized data and session flag into db
             res.render('dash', {
                 blogs,
