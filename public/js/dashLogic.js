@@ -144,7 +144,6 @@
                 blog_id = buttonsContainer.getAttribute('data-blogid');
                     console.log(blog_id);
                     
-        
             // delete the blog by id
             try {
                 // Post the information
