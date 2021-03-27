@@ -17,6 +17,7 @@ Overall i was able to get a pretty solid application, although there are still s
 
 **Demo Video**  
 Demo video below is guided walkthorough of application. 
+
 https://user-images.githubusercontent.com/72420733/112721452-3483ce00-8eda-11eb-9de6-c3fb58c8ae52.mp4
 
 
