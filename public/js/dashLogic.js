@@ -171,9 +171,9 @@
             
     };
 
-/* ------------------------------ Post Comments ----------------------------- */
+/* ------------------------------ Post Comments ------------------------------ */
 
-    // When edit button is clicked, pull of modal with initial text populated (then re-use post)
+    // When edit button is clicked, pull of modal with initial text populated (then re-use post) adding stuff
     const postComment = async(event) => {
 
         // Prevent Default
