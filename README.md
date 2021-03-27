@@ -34,5 +34,3 @@ Email me at ryanjohnson9685@gmail.com for more information.
 
 ## Credits
 For this assignment I utilized class notes and recordings, as well as some MDM and W3 schools. I also reviewed the docs for sequelize, handlebarsjs and reviewed some stack for questions I came across along the way.
-
-
