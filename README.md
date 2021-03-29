@@ -9,12 +9,11 @@
 7. [Credits](#Credits)
 
 ## Description
-**Deployed App (Heroku)** 
+**Deployed App (Heroku)**      
 https://safe-sierra-92920.herokuapp.com/
 
-**Demo Video**  
-Demo video below is guided walkthorough of application. 
-
+**Demo Video**       
+Demo video below is guided walkthorough of application.      
 https://user-images.githubusercontent.com/72420733/112721452-3483ce00-8eda-11eb-9de6-c3fb58c8ae52.mp4
 
 This project asks us to build a front and backend for a tech blog site utilizing the model view controller methodology, and technologies such as handlebars, node, sequelize and others.This project was challenging since it was the first that required us to set everything up from scratch on both the front end and back end. Using MVC was good as it helped break up things for testing and developging. For example when I had an issue getting my client side script to work, I just moved on to do all my routes and test them with postman. Then I could put that "blocker" aside until I finished, and still work on other parts of the code. When I did this I just also defined my req.body when testing and made sure to model it after that when I sent the requests from my client side. We also had to manage login and authentication for the first time. Lastly, this project also gave a first exposure to template engines such as handlebarsjs. I see the value in these for sure, and plan to use such an approach going forward. 
